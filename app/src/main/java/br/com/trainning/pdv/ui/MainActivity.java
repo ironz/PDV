@@ -1,5 +1,6 @@
-package br.com.trainning.pdv;
+package br.com.trainning.pdv.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,7 +10,15 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import br.com.trainning.pdv.R;
+import butterknife.Bind;
+
+public class MainActivity extends BaseActivity {
+
+    @Bind(R.id.fab)
+    FloatingActionButton fab;
+
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        intent = new Intent(MainActivity.this, IncluirNovoActivity.class);
+
     }
 
     @Override
@@ -43,9 +54,15 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_incluir) {
+
+        }
+
+        if (id == R.id.action_editar) {
             return true;
         }
+
+        startActivity(intent);
 
         return super.onOptionsItemSelected(item);
     }
