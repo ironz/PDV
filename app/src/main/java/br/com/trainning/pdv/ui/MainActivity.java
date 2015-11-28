@@ -35,7 +35,6 @@ public class MainActivity extends BaseActivity {
                         .setAction("Action", null).show();
             }
         });
-        intent = new Intent(MainActivity.this, IncluirNovoActivity.class);
 
     }
 
@@ -55,11 +54,13 @@ public class MainActivity extends BaseActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_incluir) {
+            intent = new Intent(MainActivity.this, IncluirNovoActivity.class);
 
         }
 
         if (id == R.id.action_editar) {
-            return true;
+            intent = new Intent(MainActivity.this, EditarActivity.class);
+
         }
 
         startActivity(intent);

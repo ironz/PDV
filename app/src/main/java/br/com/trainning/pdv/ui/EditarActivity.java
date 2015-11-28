@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.trainning.pdv.R;
@@ -19,7 +21,7 @@ import butterknife.Bind;
 import se.emilsjolander.sprinkles.CursorList;
 import se.emilsjolander.sprinkles.Query;
 
-public class IncluirNovoActivity extends BaseActivity {
+public class EditarActivity  extends BaseActivity {
 
     @Bind(R.id.editText_descricao)
     EditText descricao;
@@ -45,15 +47,30 @@ public class IncluirNovoActivity extends BaseActivity {
     @Bind(R.id.fab)
     FloatingActionButton fab;
 
+    @Bind(R.id.fab)
+    FloatingActionButton fab;
+
+    @Bind (R.id.spinner)
+    Spinner spinner;
+
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_incluir_novo);
+        setContentView(R.layout.activity_editar);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        List<String> barcodeList = new ArrayList<>();
+        List<Produto> produtoList = null;
+
+        CursorList cursor = Query.many()
+        for(Produto produto: produtoList){
+
+
+        }
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,13 +88,13 @@ public class IncluirNovoActivity extends BaseActivity {
 
                 produto.save();
 
-              //  Log.d("INCLUIRNOVO",produto.toString());
+                //  Log.d("INCLUIRNOVO",produto.toString());
 
                 CursorList cursor = Query.all(Produto.class).get();
 
                 List<Produto> lista = cursor.asList();
 
-                Log.d("INCLUIRNOVO","------------------------------------------------------");
+                Log.d("INCLUIRNOVO", "------------------------------------------------------");
 
                 for (Produto p3: lista) {
                     Log.d("INCLUIRNOVO",""+p3.toString());
